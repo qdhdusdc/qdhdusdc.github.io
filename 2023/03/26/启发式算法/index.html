@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Ken&#39;s Home">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://example.com/tags/index.html">
+  <meta name="description" content="启发式算法概述​	本文描述了我对当前存在启发式算法的理解，存在的问题与未来希望解决的问题。所有启发式算法都有一套相似的流程：创建种群，变异，优势选择。下面具体解释每一步不同算法采用的各种策略。 创建种群随机初始化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="启发式算法">
+<meta property="og:url" content="http://example.com/2023/03/26/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Ken&#39;s Home">
-<meta property="og:description" content="Welcome to Ken&#39;s Home">
+<meta property="og:description" content="启发式算法概述​	本文描述了我对当前存在启发式算法的理解，存在的问题与未来希望解决的问题。所有启发式算法都有一套相似的流程：创建种群，变异，优势选择。下面具体解释每一步不同算法采用的各种策略。 创建种群随机初始化">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-26T01:39:27.000Z">
-<meta property="article:modified_time" content="2023-03-26T01:39:27.419Z">
+<meta property="article:published_time" content="2023-03-26T02:37:01.000Z">
+<meta property="article:modified_time" content="2023-03-26T03:38:44.854Z">
 <meta property="article:author" content="Ken">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/">
+<link rel="canonical" href="http://example.com/2023/03/26/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -40,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>tags | Ken's Home
-</title>
+  <title>启发式算法 | Ken's Home</title>
   
 
 
@@ -178,43 +178,76 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="en">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/26/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Ken">
+      <meta itemprop="description" content="Welcome to Ken's Home">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ken's Home">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          启发式算法
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
 
-<div class="post-meta">
+              <time title="Created: 2023-03-26 10:37:01 / Modified: 11:38:44" itemprop="dateCreated datePublished" datetime="2023-03-26T10:37:01+08:00">2023-03-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="启发式算法概述"><a href="#启发式算法概述" class="headerlink" title="启发式算法概述"></a>启发式算法概述</h1><p>​	本文描述了我对当前存在启发式算法的理解，存在的问题与未来希望解决的问题。所有启发式算法都有一套相似的流程：创建种群，变异，优势选择。下面具体解释每一步不同算法采用的各种策略。</p>
+<h2 id="创建种群"><a href="#创建种群" class="headerlink" title="创建种群"></a>创建种群</h2><h3 id="随机初始化"><a href="#随机初始化" class="headerlink" title="随机初始化"></a>随机初始化</h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -265,6 +298,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">启发式算法概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%A7%8D%E7%BE%A4"><span class="nav-number">1.1.</span> <span class="nav-text">创建种群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">随机初始化</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
