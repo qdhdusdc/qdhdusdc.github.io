@@ -207,7 +207,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-03-31 20:56:50 / Modified: 20:58:40" itemprop="dateCreated datePublished" datetime="2023-03-31T20:56:50+08:00">2023-03-31</time>
+              <time title="Created: 2023-03-31 20:56:50 / Modified: 21:53:21" itemprop="dateCreated datePublished" datetime="2023-03-31T20:56:50+08:00">2023-03-31</time>
             </span>
 
           
@@ -221,365 +221,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h2><p>i++与++i的区别在于：i++是i的值在引用后自增，++i是i的值在引用前自增；</p>
-<p><code>int j,i=1; i++;\\本条语句结束后，i=2</code></p>
-<p><code>		++j；\\本条语句执行前，j=2</code></p>
-<p><code>printf(&quot;%d\t%d&quot;,i++,++j);\\本条语句执行前，j=3；本条语句结束后，i=3；因此结果为2	3</code>	<br><code>printf(&quot;%d\t%d&quot;,i,j);\\结果为3	3</code></p>
-<p>形如(++i)++的语句是错误的，因为执行自增自减的必须是变量，而++i是常量；</p>
-<p><code>char c[]=&quot;U&quot;; char *x=c;  if(*x++) printf(&quot;aaa&quot;);</code></p>
-<p>例如上面这段代码输出aaa，因为是先执行判断语句，x再进行自增；</p>
-<p>如果改成下面这样：</p>
-<p><code>char c[]=&quot;U&quot;; char *x=c;  if(*++x) printf(&quot;aaa&quot;);</code></p>
-<p>就不会输出aaa，因为是先进行自增，再执行判断语句；</p>
-<ul>
-<li>后缀++的优先级高于前缀++和*， *与前缀++都为2级，且为右结合，所以 *++x相当于 *(++x);</li>
-</ul>
-<p>sizeof运算符</p>
-<p>sizeof运算符可以应用于常量，变量，表达式，用来计算该类型的字节数；sizeof（数组名）表示该数组所有元素字节数之和，sizeof（数组名）&#x2F;sizeof（数组首元素）即为数组元素个数；</p>
-<p>&#96;int main(){</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> a[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="keyword">sizeof</span>(i));<span class="comment">//print 4;</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="keyword">sizeof</span>(i+j));<span class="comment">//print 4;</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="keyword">sizeof</span>(a));<span class="comment">//print 40;</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(a[<span class="number">0</span>]));<span class="comment">//print 10;</span></span><br><span class="line">&#125;`</span><br></pre></td></tr></table></figure>
-
-<p>sizeof运算符属于size_t类型，是一种无符号整型；</p>
-<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><h2 id="continue语句与break语句"><a href="#continue语句与break语句" class="headerlink" title="continue语句与break语句"></a>continue语句与break语句</h2><p>continue跳到循环的末端，没有跳出该层循环；break跳出该层循环；</p>
-<h2 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h2><p>goto语句可以跳到函数中任何有标号的语句处；goto语句往往可以被break，continue，return语句，exit函数代替，有用的地方是：在switch语句中可以跳出循环，在嵌套循环中可以跳到任何地方；</p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组是固定长度的，任何类型的数组都需要先声明长度，也就是初始化；这也产生了一个问题：如果想把输入的值存储到数组中，那么无法确定数组的长度；要解决这一问题，就要用到链表；</p>
-<h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><p>基本类型包括：</p>
-<ul>
-<li>整型，即整数类型，值为整数，包括整型int(二进制32位，4字节（Byte），一个字节等于二进制八位（bits）)，长整型long int（8字节），短整型short  int（2字节）</li>
-<li>浮点型，其值可以有小数部分，包括单精度浮点型float（4字节），双精度浮点型double（8字节），扩展精度浮点型long double；</li>
-<li>浮点型数要写出小数点，并在最后加上f，在整型和浮点型数没有本质区别时不加也可以，比如<code>float a=1;</code>a的值为1.000000；但是计算除法时，比如<code>float a=2/3;</code>和<code>float a=2.0f/3.0f;</code>就不同了，前者a是0.000000，后者a是0.666667。</li>
-</ul>
-<h2 id="变量与类型"><a href="#变量与类型" class="headerlink" title="变量与类型"></a>变量与类型</h2><p>声明为某种类型的变量，必须将它赋以相同类型的值，不过，浮点型的变量可以赋以整型的值，比如<code>float a=2\\a的值为2.000000</code>，但是这在除法中就不会达到期望的效果，比如：</p>
-<p><code>float a;     int b=2,c=3;     a=b/c;     printf(&quot;%f&quot;,a); </code></p>
-<p>输出的是0.000000，因为b，c都是整型，先执行除法运算，两个整型的除法结果还是整型，因此a被赋予0；从这个例子可以明白，变量的类型并不影响它被赋给的值的类型，可以把被赋值的变量当成某种形状的容器，向里面加入什么东西，并不会因为它的形状改变；</p>
-<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p>上面的例子中，将<code>a=b/c</code>改成<code>a=(float)b/c</code>，即可将b&#x2F;c转换为浮点型；</p>
-<h2 id="转换说明与转义序列"><a href="#转换说明与转义序列" class="headerlink" title="转换说明与转义序列"></a>转换说明与转义序列</h2><p>​	转换说明可以用<code>%m.pX</code>或<code>%-m.pX</code>表示，其中m，p是数字，选择写或不写，X是字母，必写。第一种是右对齐，第二种是左对齐，m的值代表至少占用m个字符的空间；p的值代表至少有p位有效数字；</p>
-<h2 id="typedef类型声明"><a href="#typedef类型声明" class="headerlink" title="typedef类型声明"></a>typedef类型声明</h2><p>typedef可以把变量名声明为一种类型，这个变量名可以作为类型声明其他变量，比如：</p>
-<p><code>typedef int *p; int f(p m) &#123;     printf(&quot;%d&quot;,*m); &#125; int main() &#123;     int *i;     scanf(&quot;%d&quot;,i);     f(i);     return 0; &#125;</code></p>
-<p>这里p代表整型指针，在函数f( )中形参m就是p类型的变量，也就是整型指针，因此调用函数f( )时传入整型指针i。</p>
-<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><p>char类型的变量可以用任意单字符赋值，例如</p>
-<p><code>char ch;</code></p>
-<p><code>ch=&#39;a&#39;;</code></p>
-<ul>
-<li><p>字符常量需要用单引号括起来；</p>
-</li>
-<li><p>字符型实际上是一个字符而非字符串；</p>
-</li>
-</ul>
-<h2 id="字符操作"><a href="#字符操作" class="headerlink" title="字符操作"></a>字符操作</h2><p>c语言把字符当做小整数进行处理，在ASCII码中字符的取值范围是00000000（即0）—11111111（即127）的整数，字符’a’的值为97,</p>
-<p>‘A’的值为65，同样可对字符进行运算，例如</p>
-<p><code>int i;</code></p>
-<p><code>char ch;</code></p>
-<p><code>i=&#39;a&#39;;//i is now 97,depending on the type of i;</code></p>
-<p><code>ch=65;//ch is now &#39;A&#39;</code></p>
-<p><code>ch++;//ch is now &#39;B&#39;</code></p>
-<p>字符可以进行比较，例如下面这段程序测试ch是否为小写字母，如果是，将其转换为大写字母</p>
-<p><code>if(&#39;a&#39;&lt;=ch&amp;&amp;ch&lt;=&#39;z&#39;)</code></p>
-<p><code>ch=ch-&#39;a&#39;+&#39;A&#39;;</code></p>
-<h2 id="getchar函数（读取单个字符）"><a href="#getchar函数（读取单个字符）" class="headerlink" title="getchar函数（读取单个字符）"></a>getchar函数（读取单个字符）</h2><p>scanf函数可以读取任何类型，但是在读取字符型时存在问题：scanf函数终止于空白字符，例如：</p>
-<p><code>scanf(&quot;%s&quot;,str);</code></p>
-<p><code>printf(&quot;%s&quot;,str);</code></p>
-<p>输入a	b	c，输出a；</p>
-<p>利用getchar()读取单个字符，可以避免这种问题；</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串实际上是一个字符型的一维数组；</p>
-<h3 id="字符数组与字符指针"><a href="#字符数组与字符指针" class="headerlink" title="字符数组与字符指针"></a>字符数组与字符指针</h3><p>比较以下两个声明：</p>
-<p><code>char date[]=&quot;June 14&quot;;</code></p>
-<p><code>char *date=&quot;June 14;&quot;</code></p>
-<p>第一个声明a是一个数组，第二个声明a是一个指针，需要注意：</p>
-<ul>
-<li>在声明为数组时，就像任何数组中的元素一样，可以修改date中存储的字符，而声明为指针时，date指向字面串，是不能修改的；</li>
-<li>在声明为数组时，date是数组名，在声明为指针时，date是指针变量，也可以指向其他字符串；</li>
-</ul>
-<h3 id="lt-string-h-gt-头文件"><a href="#lt-string-h-gt-头文件" class="headerlink" title="&lt;string.h&gt;头文件"></a>&lt;string.h&gt;头文件</h3><h4 id="strcpy函数（字符串复制）"><a href="#strcpy函数（字符串复制）" class="headerlink" title="strcpy函数（字符串复制）"></a>strcpy函数（字符串复制）</h4><p>原型为char *strcpy（char *s1,const char *s2）;strcpy把s2指向的字符串复制到s1指向的数组中，并返回s1，这一过程不会改变s2指向的字符串，因此将其声明为const；</p>
-<ul>
-<li>strcpy函数弥补了不能使用赋值运算符赋值字符串的不足，例如，假设我们想把字符串“abcd”复制存储到str中，不能使用下面的赋值：</li>
-</ul>
-<p><code>str=&quot;abcd&quot;;//wrong</code></p>
-<p>这时应使用strcpy函数：</p>
-<p><code>strcpy(str,&quot;abcd&quot;);//数组名是指向该数组的指针</code></p>
-<ul>
-<li>上述操作中调用strcpy函数并未考虑字符串的大小是否不大于str指向的数组</li>
-</ul>
-<h4 id="strlen函数（求字符串长度）"><a href="#strlen函数（求字符串长度）" class="headerlink" title="strlen函数（求字符串长度）"></a>strlen函数（求字符串长度）</h4><p>原型为size_t(const char *s);strlen函数返回字符串第一个空字符之前的字符个数（不包含空字符）；</p>
-<p><code>	printf(&quot;%d\n&quot;,strlen(&quot;a bcdefg&quot;));     printf(&quot;%d\n&quot;,strlen(&quot;\0&quot;));     printf(&quot;%d\n&quot;,strlen(&quot;&quot;));</code></p>
-<p>分别输出8，0，0；注意空字符(‘\0’)和空格不同，空格也是一个字符；</p>
-<h4 id="strcat函数（字符串拼接）"><a href="#strcat函数（字符串拼接）" class="headerlink" title="strcat函数（字符串拼接）"></a>strcat函数（字符串拼接）</h4><p>原型为char *strcat(char *s1,const char *s2);把字符串s2的内容追加到s1的末尾并返回字符串s1；</p>
-<p><code>strcat(str1,&quot;abc&quot;);</code></p>
-<p><code>strcat(str1,&quot;def&quot;);//str1 now contains &quot;abcdef&quot;</code></p>
-<ul>
-<li>如果str1指向的数组没有大到足以容纳目标字符串，则会造成错误，比如：</li>
-</ul>
-<p><code>char str1[6]=&quot;abc&quot;;</code></p>
-<p><code>strcat(str1,&quot;def);//wrong</code></p>
-<p>因为strcat把d，e，f，\0四个字符添加到str1中，超出str1的容量；</p>
-<h4 id="strcmp函数（字符串比较）"><a href="#strcmp函数（字符串比较）" class="headerlink" title="strcmp函数（字符串比较）"></a>strcmp函数（字符串比较）</h4><p>strcmp函数原型为int strcmp(const char *s1,const char *s2);strcmp函数比较s1与s2的长度，若s1&lt;s2,返回一个小于0的数；若s1&gt;s2，返回一个大于0的数；若s1&#x3D;&#x3D;s2,返回0；</p>
-<ul>
-<li>只要满足下列任一条件，strcmp函数就返回小于0的数：</li>
-</ul>
-<ol>
-<li>s1与s2前i个字符相同，但s1第i+1个字符的数值小于s2;</li>
-<li>s1的所有字符与s2一致，但s1比s2短；</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">strcmp</span><span class="params">(<span class="type">char</span> *s,<span class="type">char</span> t)</span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(s&amp;&amp;t&amp;&amp;s==*t)&#123;<span class="comment">//==的优先级高 </span></span><br><span class="line">		s++;</span><br><span class="line">		t++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s-t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="enum枚举类型"><a href="#enum枚举类型" class="headerlink" title="enum枚举类型"></a>enum枚举类型</h2><p>枚举类型可以让代码更简洁，其形式如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span>　枚举类型　&#123;</span>枚举元素<span class="number">1</span>,枚举元素<span class="number">2</span>,……&#125;变量名;</span><br></pre></td></tr></table></figure>
-
-<p>比如下面这段示例，DAY是枚举类型，day是枚举型变量</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">DAY</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">      MON=<span class="number">1</span>, TUE, WED, THU, FRI, SAT, SUN</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	DAY day;</span><br><span class="line">	day=WED;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,day);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>函数关系是对每个自变量都有唯一的因变量与之对应，c语言中也有类似的函数：对于每一个输入的量，都有一个返回的量与之对应，比如：</p>
-<p><code>int average(int a,int b)&#123;</code></p>
-<p><code>int m;</code></p>
-<p><code>m=(a+b)/2;</code></p>
-<p><code>return m;&#125;</code></p>
-<p>返回a，b的平均值。</p>
-<p>对于更广义的函数，它不一定要有输入值甚至返回值，这时它的意义就是执行函数体内的语句，比如</p>
-<p><code>void a()&#123;     printf(&quot;1&quot;); &#125; int main() &#123;a(); return 0;&#125;</code></p>
-<p>输出1；</p>
-<ul>
-<li><p>这里注意虽然a没有输入值，但是调用时仍然要写成a（void）或a（），不然编译器是不能识别的；</p>
-</li>
-<li><p>虽然a（）没有返回值但是还是输出了1，返回值是返回该函数类型的值，而输出值不一定是函数的返回值，也可能是执行函数体中的语句；</p>
-</li>
-</ul>
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><h3 id="形式参数"><a href="#形式参数" class="headerlink" title="形式参数"></a>形式参数</h3><p>出现在函数定义中，用来表示函数调用时所要提供的值，并没有实际意义</p>
-<h3 id="实际参数"><a href="#实际参数" class="headerlink" title="实际参数"></a>实际参数</h3><p>出现在函数调用中的表达式称为<strong>实际参数</strong>；实际参数是<strong>值传递</strong>的：先将实际参数的值赋给形式参数，然后形式参数在函数中执行相应语句，在函数执行过程中，对形式参数的改变不会影响实际参数的值，因此值传递被称为<strong>单向传递（即只能由实参传递给形参）</strong>，实参变量和形参变量分别占用不同的存储单元；c语言的这一特点有利有弊：</p>
-<ul>
-<li>因为形参的修改不会影响实参，所以可以把形参作为函数中的变量使用，这样可以减少真正需要的变量数量，例如：</li>
-</ul>
-<p><code>int power(int x,int n)&#123;     int result=1;int i;     for(i=0;i&lt;n;i++)     result*=x;     return result; &#125;</code></p>
-<p>power函数计算了x的n次方，因为n是实参的副本，所以可以在函数体内修改它，也就不需要使用变量i了；</p>
-<p><code>int power(int x,int n)&#123;     int result=1;     while(n-- &gt;0)     result*=x;     return result; &#125;</code></p>
-<ul>
-<li>c语言中函数不能返回两个值，如果想把两个变量传递给函数并对他们执行相应语句，比如将一个数分解为整数部分和小数部分，尝试以下程序：<br><code>void decompose(double x,long int_part,double frac_part)&#123;</code></li>
-</ul>
-<p><code>int_part=(long) x;</code></p>
-<p><code>frac_part=x-int_part;&#125;</code></p>
-<p>调用这个函数：<code>decompose(3.14,i,d);</code>我们希望i和d为整数部分和小数部分，但是i和d的值并不会发生变化，这就是因为形参不能传递给实参；要想解决这个问题，就要使用指针传递方式；</p>
-<h4 id="数组型实际参数"><a href="#数组型实际参数" class="headerlink" title="数组型实际参数"></a>数组型实际参数</h4><p>数组作为形式参数，当形式参数为一维数组时,可以不说明数组的长度，实际参数可以是元素类型正确的任何一维数组；</p>
-<h2 id="一般格式"><a href="#一般格式" class="headerlink" title="一般格式"></a>一般格式</h2><p>返回类型 函数名 （形式参数）｛复合语句｝</p>
-<ul>
-<li>返回类型即为函数返回值的类型,如果为void类型，说明函数没有返回值</li>
-<li>函数不能返回数组，数组是数据结构，不是数据类型</li>
-</ul>
-<h2 id="return语句"><a href="#return语句" class="headerlink" title="return语句"></a>return语句</h2><p>非void的函数必须使用return语句来指定将要返回的值，这个值的类型即函数类型；return语句后也可以跟表达式；void函数中return后可以无表达式，函数立刻返回，不再执行接下来的语句。</p>
-<h1 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h1><h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>在函数体内声明的变量称为局部变量；局部变量作用效果只在该函数之内（作用域为块作用域），因此其他函数也可以将同名变量用于其他用途。</p>
-<h4 id="存储期"><a href="#存储期" class="headerlink" title="存储期"></a>存储期</h4><p>程序执行时变量的值保持不变（变量的存储空间存在）的时间称为存储期。局部变量的存储空间在函数被调用时自动分配的，在函数返回时收回分配，所以被称为<strong>自动存储期</strong>。</p>
-<p>我们也可以使局部变量在整个程序执行期间都保持不变，在声明前加上static，称为具有<strong>静态存储期</strong>，例如<code>void f(void)&#123;static int i;&#125;</code>在函数f执行时i的值保持不变。（i仍然具有块作用域，其他函数中也可以使用i，与函数f无关）</p>
-<h4 id="外部变量"><a href="#外部变量" class="headerlink" title="外部变量"></a>外部变量</h4><p>声明在函数体外，函数可以对外部变量进行修改；</p>
-<p><code>int i=0; void f(void) &#123;     i=1; &#125; int main() &#123;     f();     printf(&quot;%d&quot;,i);     return 0; &#125;</code></p>
-<p>输出1；</p>
-<ul>
-<li>需要注意，不应在不同的函数中因为不同的目的使用外部变量，容易造成错误；</li>
-</ul>
-<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><p>栈是一种<strong>数据结构</strong>，字面解释成存放数据的房子，栈存放数据的方式可以当成：把书放到箱子里，先放进去的压箱底最后才能拿出来，最后放进去的最先拿出来。向栈中加入元素，只能从栈顶添加；取出元素同理；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">栈的存储机制是只能从一端出入，相当于一个入口的单行道，先进去的只有等后进去的出来后才能出来，也就是先进后出机制。</span><br><span class="line">所以元素54321依次入栈，依次出栈的顺序就是12345</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现栈的方法之一：用数组来实现栈，构建一个数组和一个变量top，数组存储栈中的元素，top表示栈顶的位置（即最后一次加入数据时数组中项的序号），当栈为空时top&#x3D;0（即top在数组的第一项a[0]）；将数据从栈中排出，只要让top-1；访问栈顶元素的值，直接返回top指向的值；栈里元素的个数，就是top的值；</li>
-</ul>
-<p>栈有四个功能：</p>
-<ul>
-<li><p>入栈（push）</p>
-</li>
-<li><p>判断栈满（isFull）</p>
-</li>
-<li><p>出栈（pop）</p>
-</li>
-<li><p>判断栈空（isEmpty）<br>栈是一个操作受限的线性表，而线性表呢，主要有两种：</p>
-<ol>
-<li><p>顺序存储的数组<br>优点：操作简单，节省空间<br>缺点：栈的大小一开始就声明死了，不利于使用</p>
-</li>
-<li><p>非顺序存储的链表<br>优缺点和顺序存储数组恰恰相反</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="构建C程序"><a href="#构建C程序" class="headerlink" title="构建C程序"></a>构建C程序</h2><p>C程序的构成要素：</p>
-<ul>
-<li><p>#include指令；#define指令（预处理指令）</p>
-</li>
-<li><p>类型定义</p>
-</li>
-<li><p>全局变量的声明</p>
-</li>
-<li><p>除main函数外其他函数原型</p>
-</li>
-<li><p>main函数定义</p>
-</li>
-<li><p>除main函数外其他函数的定义</p>
-</li>
-<li><p>注释：函数的意义；参数的意义；如果函数有返回值，应给出描述信息；函数的副作用；</p>
-</li>
-</ul>
-<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><h2 id="内存地址"><a href="#内存地址" class="headerlink" title="内存地址"></a>内存地址</h2><p>内存中的每一个字节都拥有一个编号，称为内存地址（32位或64位，与处理器有关）；</p>
-<p>变量的地址为第一个字节的地址；</p>
-<h2 id="指针变量"><a href="#指针变量" class="headerlink" title="指针变量"></a>指针变量</h2><p>定义一个变量存放内存地址，称为指针变量；</p>
-<p>例如<code>int num=100;</code>系统根据num的类型（int，4字节）开辟一个内存空间，每一个字节都有一个地址，num的地址为第一个字节的地址。</p>
-<h3 id="声明指针变量"><a href="#声明指针变量" class="headerlink" title="声明指针变量"></a>声明指针变量</h3><p>声明指针变量p指向某种类型对象，比如<code>int *p;</code> 每个指针变量只指向一种类型的对象，比如<code>char*m；</code>表示m指向一个字符型变量；</p>
-<p>声明指针变量时，为指针留出空间，但未将其指向任何对象；初始化的一个方法就是用某个变量的地址对其赋值；例如int i，*p&#x3D;&amp;i；</p>
-<h3 id="取址运算符"><a href="#取址运算符" class="headerlink" title="取址运算符"></a>取址运算符</h3><p>&amp;为取址运算符，用于得到变量的地址；例如int *p&#x3D;&amp;a；指针变量p存放a的地址；</p>
-<h3 id="寻址运算符"><a href="#寻址运算符" class="headerlink" title="寻址运算符"></a>寻址运算符</h3><p>​	* 为寻址运算符，用于访问指针指向的对象的内容；如果p指向i，则*p与i等价，改变 *p的值也会改变i的值。例如j&#x3D; *&amp;i；即先取i的地址再访问&amp;i,等价于j&#x3D;i。注意这里的 *与定义指针变量的相同，但二者意义不同，属于是符号的重复使用；</p>
-<p><code>#include &lt;stdio.h&gt; int main(void)&#123;     int a=3,b=4,*p,*m=&amp;b;//这里*为声明指针变量     p=&amp;a;     printf(&quot;%d\n%d\n%d\n%d\n&quot;,p,*p,m,*m);//这里*为寻址     return 0;&#125;</code></p>
-<p>例如这段程序输出值分别为…(a地址)，3（a的值），…（b地址），4（b的值）</p>
-<ul>
-<li>如果指针变量未初始化，则用寻址运算符无意义，<code>如int *p；printf（“%d”，*p）；</code>是无意义的；</li>
-</ul>
-<h3 id="指针赋值"><a href="#指针赋值" class="headerlink" title="指针赋值"></a>指针赋值</h3><p>如果p，q都指向i，无论对* p，* q赋值，* p，* q，i等价变化，因为他们都代表同一对象；在函数中形参如果是指针，那么实参与其副本形参都指向同一个地址中的值，也就实现了“修改实参的值”的效果；</p>
-<p>例如</p>
-<p><code>void decompose(double x,long *int_part,double *frac_part)&#123;</code></p>
-<p><code>*int_part=(long) x;</code></p>
-<p><code>*frac_part=x-*int_part;&#125;</code></p>
-<p>指针变量int_part和frac _part分别存储了x整数部分和小数部分的地址，地址不会改变，因此对应的元素能逃出函数范围；</p>
-<p>再看一个例子:<br><code>int swap(int x,int y)&#123;//x,y是形式参数     int t;     if(x&gt;y)     &#123;         t=x;         x=y;         y=t;     &#125; &#125;</code></p>
-<p><code>int main()&#123; i=1;j=2; swap(j,i);//i，j是实际参数 printf(&quot;%d	%d&quot;,i,j);	     return 0;     &#125;</code></p>
-<p>我们希望调用swap实现将i，j的值交换，但是失败了；再来看这段话：出现在函数调用中的表达式称为<strong>实际参数</strong>；实际参数是<strong>值传递</strong>的：先将实际参数的值赋给函数的形式参数，然后形式参数在函数中执行相应语句，在函数执行过程中，对形式参数的改变不会影响实际参数的值，因此值传递被称为<strong>单向传递（即只能由实参传递给形参）</strong>，实参变量和形参变量分别占用不同的<strong>存储单元</strong>；还要注意，指针作为形参仍然遵循相同的规则，也是由实参（这里是指针）赋值给形参，然后形参在函数体内执行相应语句，之所以说指针形参能修改实参，是因为指针实参与相应的指针形参指向同一对象，然后指针形参在函数内对所指对象进行操作（称为<strong>解引用</strong>），也就实现了修改实参的效果；从这里我们也能理解，函数要想修改实际参数，必须<strong>有两个过程</strong>：</p>
-<ul>
-<li><strong>将指针实际参数传递给指针形式参数，</strong>以便在函数体内执行操作；（传参）</li>
-<li><strong>指针形式参数在函数体内必须对其所指对象进行操作，以修改对象的值，</strong>否则在函数结束时，指针形式参数与普通形式参数一样会消失，并不能保留指针形参的相应变化；（解引用）</li>
-</ul>
-<p><code>int swap(int *x,int *y)&#123;//传参     int t;         t=*x;         *x=*y;         *y=t;//解引用 &#125;</code></p>
-<p>这是正确的swap函数；而下面的例子：</p>
-<p><code>int swap(int *x,int *y)&#123;     int *t;         *t=*x;         *x=*y;         *y=*t; &#125;</code></p>
-<p>虽然也符合以上两条件，但是却违背了基本规则：指针必须初始化；</p>
-<h2 id="指针与数组"><a href="#指针与数组" class="headerlink" title="指针与数组"></a>指针与数组</h2><p> 数组名的地址就是数组第一个元素的地址，例如这段程序，两次输出结果相同。</p>
-<p><code>int main()&#123;</code></p>
-<p><code>char str[128];</code></p>
-<p><code>printf（&quot;%p&quot;,str）;</code></p>
-<p><code>printf(&quot;%p&quot;,&amp;str[0]);//这里取str[0]的地址，用&amp;</code></p>
-<p><code>return 0;&#125;</code></p>
-<p>数组中每两个相邻元素的地址值的差相等，等于该类型的字节数；</p>
-<p><code>int main()&#123;     char a[]=&quot;haha&quot;;     int b[]=&#123;1,2,3&#125;;     float c[]=&#123;1,2,3&#125;;     double d[]=&#123;1,2,3&#125;;     printf(&quot;%p %p %p\n&quot;,&amp;a[0],&amp;a[1],&amp;a[2]);     printf(&quot;%p %p %p\n&quot;,&amp;b[0],&amp;b[1],&amp;b[2]);     printf(&quot;%p %p %p\n&quot;,&amp;c[0],&amp;c[1],&amp;c[2]);     printf(&quot;%p %p %p\n&quot;,&amp;d[0],&amp;d[1],&amp;d[2]);     return 0; &#125;</code></p>
-<p>上面这段程序两两之差分别为1，2，4，8，对应四种类型的字节数（地址的值为十六进制）；因此，指向数组的指针的加减等于相应地址的加减，又对应数组中的元素；</p>
-<p><code>int main()&#123; int a[]=&#123;1,2,3&#125;;     int *p=a;     printf(&quot;%d %d %d&quot;,*p,*(p+1),*(p+2));     return 0; &#125;</code></p>
-<p>例如上面这段代码，输出的值分别为1，2，3，注意*（p+1）不是将地址+1，而是指向数组下一个元素；（ *p+1表示 *p与1之和，即第一个元素与1之和，如果其为字符型则会出错）；</p>
-<p>c语言只有3种格式的指针算数运算：指针加整数；指针减整数；指针减指针；</p>
-<ol>
-<li>如果p指向数组元素a[i],那么p+j指向a[i+j];</li>
-<li>两个指针相减，结果为指针之间的距离（用数组元素的个数来度量），如果p指向a[i],q指向a[j]，那么p-q&#x3D;i-j；</li>
-<li>指针的比较：可以用关系运算符（&lt;,&gt;,&lt;&#x3D;,&gt;&#x3D;）和判等运算符（&#x3D;&#x3D;，！&#x3D;）进行指针比较，只有当两个指针指向同一数组时比较才有意义，比较的结果依据数组中两个元素的相对位置，例如在下面的赋值中p&gt;&#x3D;q的结果为1：</li>
-</ol>
-<p><code>p=&amp;a[5];</code></p>
-<p><code>q=&amp;a[1];</code></p>
-<p>来看下面这段代码：</p>
-<p><code>int i,*p,a[]=&#123;1,2,3,4,5&#125;; p=&amp;a[1]; for(i=0;i&lt;5;i++) printf(&quot;%d&quot;,p[i]);\\结果是23450，因为p数组只被赋给了4个元素   return 0;</code></p>
-<p>我们并没有把p声明为数组，但是却能输出p[i]，实际上，[ ]应该称为下标运算符，它对一个地址进行取下标操作，比如p[1]，代表p指向的地址加上p的类型的字节数；</p>
-<h3 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h3><ul>
-<li>指针可以指向数组中的元素，但是数组名是一个地址，属于常量，给数组名赋值的操作是错误的，比如：</li>
-</ul>
-<p><code>char str1[10],str2[10];</code></p>
-<p><code>str1=&quot;abc&quot;//wrong;</code></p>
-<p><code>str2=str1;//wrong</code></p>
-<p>但是在数组初始化中，&#x3D;不是赋值运算符；</p>
-<p>而指针是左值，可以进行赋值和自增；</p>
-<ul>
-<li>指针数组是一个数组，每个数组元素存放一个指针变量，可以表示为int *p1[]；在下面的例子中，hello，world都相当于一维数组，</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *p1[]=&#123;<span class="string">&quot;hello&quot;</span>,<span class="string">&quot;world&quot;</span>&#125;;</span><br><span class="line"><span class="type">int</span> i;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,p1[i]);<span class="comment">//%s表示输出字符串 </span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-<p>需要注意，c语言中并没有字符串类型，字符串其实是一组一维数组，也就是各个字符组成的数组，因为hello相当于是数组（当成     </p>
-<p>char a[]&#x3D;｛“h”，“e”，“l”，“l”，“o”｝），所以如果再加一个*，就是取a[0]这个地址中存放的值，也就是h（同时要将%s换成%c）；</p>
-<h3 id="数组指针"><a href="#数组指针" class="headerlink" title="数组指针"></a>数组指针</h3><p>数组指针是指向数组的指针，需要注意数组的地址等于数组名的地址，但不相同；数组名的地址也就是数组第一个元素的地址，而整个数组另有一个地址，这个地址与数组名的地址相等，例如下面这个打印数组元素的程序：</p>
-<p><code>int main()&#123;     int temp[]=&#123;1,2,3&#125;;     int (*p)[3]=&amp;temp;//取数组temp的地址，将其存放在变量p中     int i;     for(i=0;i&lt;3;i++)         printf(&quot;%d\n&quot;,*(*p+i));//*p表示数组temp第一个元素的地址，再对其寻址得到元素值         return 0; &#125;</code></p>
-<p>从这个例子可以看出，指针也可以存放地址；例如<code>int *p=&amp;q；int *q=&amp;j；</code>那么 *p等于q(等于&amp;j，) **p等于 *q等于j；</p>
-<h3 id="指针与二维数组"><a href="#指针与二维数组" class="headerlink" title="指针与二维数组"></a>指针与二维数组</h3><p>如果int array[4] [5]，则array的值为array[0] [0]的地址，array+1的值为array[1] [0]的地址，因为二维数组在内存中是线性排列的，对于一维数组而言，数组中元素地址顺序依次排列，因此数组名+1即为数组最后一个元素地址后的那个地址（两者间隔为该类型的字节数）；二维数组在内存中是每一行的元素依次排列的，因此数组名+1即为数组第二行的第一个元素的地址；</p>
-<h2 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h2><p>空指针是不指向任何地方的指针，用名为NULL的宏表示，这是一个区别于有效指针的特殊值；NULL的地址为0，因此if（NULL）相当于if（0）；</p>
-<h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><p>为了动态地分配存储空间，需要调用内存分配函数；这些函数声明在&lt;stdlib.h&gt;头文件(standard library，标准库头文件）中；</p>
-<h3 id="malloc函数"><a href="#malloc函数" class="headerlink" title="malloc函数"></a>malloc函数</h3><p>原型：<code>void *malloc（size_t  size）;malloc</code>函数让系统分配size个字节的内存空间，并返回一个指向这块空间的指针，但是并不对内存进行初始化；</p>
-<ul>
-<li>由于返回类型是void，所以它可以被转换成任何类型的数据，如果函数调用失败，返回值是NULL，如果size参数设置为0，返回值也可能是NULL；</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int *p;</span><br><span class="line">	p=(int*)malloc(sizeof(int));//malloc返回任意类型，因此最好加上强制类型转换；</span><br><span class="line">	if(p==NULL)&#123;</span><br><span class="line">		printf(&quot;fault&quot;);exit（1）；&#125;//如果找不到我们需要的足够大的内存块，就会返回NULL；一般不存在这种问题printf(&quot;enter an interger:&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,p);</span><br><span class="line">	printf(&quot;what you enter is:%d&quot;,p);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意，直接对p进行赋值是错误的，例如</p>
-<p><code>	int *p;     scanf(&quot;%d&quot;,p);      printf(&quot;%d&quot;,*p);</code></p>
-<p>并不能输出我们想要的值，因为并未声明p指向什么，即未初始化；指针必须初始化；</p>
-<h3 id="释放内存空间"><a href="#释放内存空间" class="headerlink" title="释放内存空间"></a>释放内存空间</h3><p>申请的动态内存如果未释放，则这块内存空间一直存在，直到程序被关闭；如果一段申请动态内存的代码在循环中，不释放内存会导致内存被耗尽；我们使用free函数释放内存空间；</p>
-<p>原型：void  free(void *ptr)；</p>
-<p>free函数释放ptr参数指向的内存空间，该内存空间必须是由以上三种函数申请的，否则导致未定义；该函数并不修改ptr的值，所以调用后仍然指向原来的地方（和预期不同）；</p>
-<p>因此，我们修改上述代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int p;</span><br><span class="line">	p=(int)malloc(sizeof(int));//malloc返回任意类型，因此最好加上强制类型转换；</span><br><span class="line">	if(p==NULL)&#123;</span><br><span class="line">		printf(&quot;fault&quot;);exit（1）；</span><br><span class="line">	&#125;//如果找不到我们需要的足够大的内存块，就会返回NULL；一般不存在这种问题</span><br><span class="line">	printf(&quot;enter an interger:&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,p);</span><br><span class="line">	printf(&quot;what you enter is:%d&quot;,*p);`</span><br><span class="line">	free(p);</span><br><span class="line">	printf(&quot;what you enter is:%d&quot;,*p);//这里的值不是我们输入的值，因为内存被释放</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><p>内存泄露有两种，上面是一种（隐式内存泄漏），另一种如下（丢失内存块地址）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int p;</span><br><span class="line">	int num=123;</span><br><span class="line">	p=(int*)malloc(sizeof(int));//malloc返回任意类型，因此最好加上强制类型转换；</span><br><span class="line">	if(p==NULL)&#123;</span><br><span class="line">		printf(&quot;fault&quot;);exit（1）；</span><br><span class="line">	&#125;//如果找不到我们需要的足够大的内存块，就会返回NULL；一般不存在这种问题</span><br><span class="line">	printf(&quot;enter an interger:&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,p);</span><br><span class="line">	p=</span><br><span class="line">	printf(&quot;what you enter is:%d&quot;,*p);`</span><br><span class="line">	free(p);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出123；程序无视了输入，因为malloc申请的内存块的地址保存在p中，也就是说只有p知道这个地址，现在给p赋新值，那这个地址就丢失了；更严重的是，p&#x3D;&amp;num执行后p是局部变量的指针，free（p）会导致错误；</p>
-<h3 id="calloc函数"><a href="#calloc函数" class="headerlink" title="calloc函数"></a>calloc函数</h3><p>malloc函数不能初始化内存空间，使用calloc函数可对内存进行初始化，其原型为：void *calloc（size_t n,size_t size）;calloc函数为n个元素的数组分配内存空间，每个元素的长度都为size个字节，类似malloc函数，如果要求的空间无效，则返回NULL；在分配内存后，calloc函数把所有元素初始化为0；</p>
-<h1 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h1><p>数组（Array），它是一组具有相同类型的数据的集合。但在实际的编程过程中，我们往往还需要一组类型不同的数据，例如对于学生信息登记表，姓名为字符串，学号为整数，年龄为整数，所在的学习小组为字符，成绩为小数，因为数据类型不同，显然不能用一个数组来存放。 </p>
-<p>在C语言中，可以使用 结构体（<code>Struct</code>） 来存放一组不同类型的数据。结构体的定义形式为：<br><code>struct</code> 结构体名{<br>    结构体所包含的变量或数组<br>};</p>
-<p>结构体是一种集合，它里面包含了多个变量或数组，它们的类型可以相同，也可以不同，每个这样的变量或数组都称为结构体的<strong>成员</strong>（Member） 。请看下面的一个例子： </p>
-<p><code>struct stu&#123;     char *name;  //姓名，由于是不改变的字符串，声明为指针     int num;  //学号     int age;  //年龄     char group;  //所在学习小组     float score;  //成绩 &#125;;</code><br><code>stu</code> 为结构体名，它包含了 5 个成员，分别是 <code>name、num、age、group、score;</code>结构体成员的定义方式与变量和数组的定义方式相同，只是不能初始化。<br>注意大括号后面的分号不能少，这是一条完整的语句。<br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。 </p>
-<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong> ；而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>或<strong>构造数据类型</strong>。 </p>
-<h2 id="结构体变量"><a href="#结构体变量" class="headerlink" title="结构体变量"></a>结构体变量</h2><p>既然结构体是一种数据类型，那么就可以用它来定义变量。例如：<br><code>struct stu stu1, stu2;</code><br>定义了两个变量 <code>stu1 </code>和 <code>stu2，</code>它们都是 stu 类型，都由 5 个成员组成。注意关键字 struct 不能少。 </p>
-<p><code>stu</code> 就像一个“模板”，定义出来的变量都具有相同的性质。也可以将结构体比作“图纸”，将结构体变量比作“零件”，根据同一张图纸生产出来的零件的特性都是一样的。 </p>
-<p>也可以在定义结构体的同时定义结构体变量：</p>
-<p><code>struct stu&#123;     char *name;  //姓名     int num;  //学号     int age;  //年龄     char group;  //所在学习小组     float score;  //成绩 &#125; stu1, stu2;</code></p>
-<p>将变量放在结构体定义的最后即可。</p>
-<p>也可以直接对结构体变量初始化；</p>
-<p><code>struct stu&#123;     char *name;  //姓名     int num;  //学号     int age;  //年龄     char group;  //所在学习小组     float score;  //成绩 &#125; stu1=&#123;&quot;Tom&quot;,12,18,&#39;A&#39;,136.5&#125;;</code></p>
-<h2 id="成员的获取和赋值"><a href="#成员的获取和赋值" class="headerlink" title="成员的获取和赋值"></a>成员的获取和赋值</h2><p>结构体和数组类似，也是一组数据的集合，整体使用没有太大的意义。数组使用下标 <code>[ ]</code> 获取单个元素，结构体使用点号 <code>.</code> 获取单个成员。获取结构体成员的一般格式为：</p>
-<p><strong>结构体变量名.成员名;</strong></p>
-<p>通过这种方式可以获取成员的值，也可以给成员赋值，例如：</p>
-<p><code>#include &lt;stdio.h&gt; int main()&#123;     struct&#123;         char *name;  //姓名         int num;  //学号         int age;  //年龄         char group;  //所在小组         float score;  //成绩     &#125; stu1;     //给结构体成员赋值     stu1.name = &quot;Tom&quot;;     stu1.num = 12;     stu1.age = 18;     stu1.group = &#39;A&#39;;     stu1.score = 136.5;     //读取结构体成员的值     printf(&quot;%s的学号是%d，年龄是%d，在%c组，今年的成绩是%.1f！\n&quot;, stu1.name, stu1.num, stu1.age, stu1.group, stu1.score);     return 0; &#125;</code></p>
-<p>运行结果：<br>Tom的学号是12，年龄是18，在A组，今年的成绩是136.5！</p>
-<h2 id="结构体嵌套"><a href="#结构体嵌套" class="headerlink" title="结构体嵌套"></a>结构体嵌套</h2><p>可以把一种结构体嵌套在另一个结构体中，例如：</p>
-<p><code>int main()&#123;     struct person_name&#123;         char *firstname;         char *lastname;     &#125;;     struct stu&#123;         struct person_name name;  //姓名         int num;  //学号         int age;  //年龄         char group;  //所在小组         float score;  //成绩     &#125;;     struct stu student1;     student1.name.firstname=&quot;Issac&quot;;     student1.name.lastname=&quot;Newton&quot;;     printf(&quot;%s %s&quot;,student1.name.firstname,student1.name.lastname);     return 0; &#125;</code></p>
-<p>访问2层嵌套的结构体要用两次.运算符；</p>
-<p>使name成为结构的好处之一就是可以把name作为数据单元来处理；这样操作起来更容易，例如，如果打算编写函数来显示名字，那么只需要传递一个实参（person_name结构）而非三个参数：</p>
-<p><code>display(student1.name);</code></p>
-<p>同样，把信息从结构person_name复制给结构stu的成员name将只需要一次赋值：</p>
-<p><code>struct person_name new_name;</code></p>
-<p><code>student1.name=new_name;</code></p>
-<h2 id="结构数组"><a href="#结构数组" class="headerlink" title="结构数组"></a>结构数组</h2><p>结构数组即元素为结构体的数组；</p>
-<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>链表是由一连串的结构（称为结点）组成的，其中每个结点都包含指向链表中下一个结点的指针；链表的最后一个结点包含一个空指针；</p>
-<h2 id="链表与数组的比较"><a href="#链表与数组的比较" class="headerlink" title="链表与数组的比较"></a>链表与数组的比较</h2><p>数组和链表是数据结构的两种存储方式：顺序存储和链式存储；链表的优点在于：我们可以很容易地在链表中插入和删除结点，即允许链表根据需要扩大和缩小；而数组的优点在于能够随机访问数组中的元素，访问链表中的元素则和结点与链表的起始处的距离有关，如果结点距离链表的起始处近，则访问时间较短，反之访问时间较长；</p>
-<h2 id="链表的建立"><a href="#链表的建立" class="headerlink" title="链表的建立"></a>链表的建立</h2><h3 id="声明结点类型"><a href="#声明结点类型" class="headerlink" title="声明结点类型"></a>声明结点类型</h3><p>为了建立链表，首先需要一个表示表中单个结点的结构；结点应包含<strong>数据</strong>和<strong>指向下一个结点的指针</strong>；</p>
-<p><code>struct node&#123;</code></p>
-<p><code>int value;</code></p>
-<p><code>struct node *next;</code></p>
-<p><code>&#125;Node;</code></p>
-<h3 id="创建结点"><a href="#创建结点" class="headerlink" title="创建结点"></a>创建结点</h3><p>包括三个步骤：</p>
-<ol>
-<li>为结点分配内存单元；</li>
-<li>把数据存储到结点中；</li>
-<li>把结点插入链表中；</li>
-</ol>
-<h2 id="链表操作"><a href="#链表操作" class="headerlink" title="链表操作"></a>链表操作</h2><h3 id="插入结点"><a href="#插入结点" class="headerlink" title="插入结点"></a>插入结点</h3><p>在链表中插入新元素，</p>
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="读写"><a href="#读写" class="headerlink" title="读写"></a>读写</h2><p>读就是从文件里获取数据，写则是将数据写入文件里。在完成对一个文件的读写操作之后，<strong>必须将其关闭</strong>。</p>
-<p>fopen函数用于打开一个文件；</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	FILE *fp;</span><br><span class="line">	<span class="type">int</span> ch;</span><br><span class="line">	<span class="keyword">if</span>((fp=fopen(<span class="string">&quot;hello.txt&quot;</span>,<span class="string">&quot;r&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;error\n&quot;</span>);</span><br><span class="line">		<span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>((ch=getc(fp))!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">putchar</span>(ch);</span><br><span class="line">	&#125;</span><br><span class="line">	fclose(fp);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>该文件夹下若含有名为hello.txt的文件，则输出其中的内容；若没有此文件，输出error；</p>
-<p>使用fprintf函数将内容写入指定文件，使用<code>fopen(&quot;date.txt&quot;,&quot;w&quot;)</code>打开名为date的文件（如果没有此文件则会创建一个名为date的文件），并写入内容；</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	FILE *fp;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">tm</span> *<span class="title">p</span>;</span></span><br><span class="line">	<span class="type">time_t</span> t;</span><br><span class="line">	time(&amp;t);</span><br><span class="line">	p=localtime(&amp;t);</span><br><span class="line">	<span class="keyword">if</span>((fp=fopen(<span class="string">&quot;date.txt&quot;</span>,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;error\n&quot;</span>);</span><br><span class="line">		<span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fprintf</span>(fp,<span class="string">&quot;%d-%d-%d&quot;</span>,<span class="number">1900</span>+p-&gt;tm_year,<span class="number">1</span>+p-&gt;tm_mon,p-&gt;tm_mday);</span><br><span class="line">	fclose(fp);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如上，将计算机日期写入名为date的文件，这个文件包含在源代码所在的文件夹中；</p>
-<h3 id="fseek函数"><a href="#fseek函数" class="headerlink" title="fseek函数"></a>fseek函数</h3><p>用 法：<code>int fseek(FILE *stream, long offset, int fromwhere);</code><br>      第一个参数stream为文件指针<br>      第二个参数offset为偏移量，整数表示正向偏移，负数表示负向偏移<br>      第三个参数fromwhere设定从文件的哪里开始偏移，可能取值为：SEEK_CUR、SEEK_END 或 SEEK_SET<br>      0 &#x2F; SEEK_SET：文件开头<br>      1 &#x2F; SEEK_CUR：当前位置<br>      2 &#x2F; SEEK_END：文件结尾<br>简言之：<br>      fseek(fp, 100L, 0); 把fp指针移动到离文件开头100字节处；<br>      fseek(fp, 100L, 1); 把fp指针移动到离文件当前位置100字节处；<br>      fseek(fp, 100L, 2); 把fp指针退回到离文件结尾100字节处。</p>
-<h3 id="getc函数"><a href="#getc函数" class="headerlink" title="getc函数"></a>getc函数</h3><p> <strong>int getc(FILE *stream)</strong> 从指定的流 stream 获取下一个字符（一个无符号字符），并把位置标识符往前移动。</p>
-<h1 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h1><h2 id="lt-time-h-gt-头文件"><a href="#lt-time-h-gt-头文件" class="headerlink" title="&lt;time.h&gt;头文件"></a>&lt;time.h&gt;头文件</h2><p>time函数返回当前的日历时间，</p>
-<h2 id="lt-stdlib-h-gt-头文件"><a href="#lt-stdlib-h-gt-头文件" class="headerlink" title="&lt;stdlib.h&gt;头文件"></a>&lt;stdlib.h&gt;头文件</h2><p>standard library，标准库头文件</p>
-<h3 id="malloc函数-1"><a href="#malloc函数-1" class="headerlink" title="malloc函数"></a>malloc函数</h3><p>原型：void*malloc（size_t  size）;malloc函数向系统分配size个字节的内存空间，并返回一个指向这块空间的指针，但是并不对内存进行初始化；</p>
-<ul>
-<li>由于返回类型是void，所以它可以被转换成任何类型的数据，如果函数调用失败，返回值是NULL，如果size参数设置为0，返回值也可能是NULL；</li>
-</ul>
-<h3 id="system函数"><a href="#system函数" class="headerlink" title="system函数"></a>system函数</h3><p>system是一个函数，用来运行外部的程序，格式为system(“命令语句”); </p>
-<p>以下代码会打开计算器；</p>
-<p><code>#include&lt;stdlib.h&gt; //加#include&lt;windows.h&gt;也可以 int main() &#123;     system(&quot;calc&quot;);		//打开计算器     return 0; &#125;</code></p>
-<h2 id="lt-windows-h-gt-头文件"><a href="#lt-windows-h-gt-头文件" class="headerlink" title="&lt;windows.h&gt;头文件"></a>&lt;windows.h&gt;头文件</h2><h3 id="坐标结构"><a href="#坐标结构" class="headerlink" title="坐标结构"></a>坐标结构</h3><p>coord是来自&lt;windows.h&gt;中的一个函数，定义是表示文字在控制台的坐标，俗称<strong>坐标结构</strong></p>
-<p><code>#include &lt;windows.h&gt; </code></p>
-<p><code>typedef struct _COORD</code></p>
-<p><code>&#123; short x;//这里是短整型 </code></p>
-<p><code>short y; </code></p>
-<p><code>&#125;COORD;</code></p>
-<h3 id="sleep函数"><a href="#sleep函数" class="headerlink" title="sleep函数"></a>sleep函数</h3><p>sleep(int x)可以使程序在sleep函数位置暂停x毫秒；</p>
-<h2 id="lt-stdbool-h-gt-头文件"><a href="#lt-stdbool-h-gt-头文件" class="headerlink" title="&lt;stdbool.h&gt;头文件"></a>&lt;stdbool.h&gt;头文件</h2><p>bool型变量，若逻辑运算结果为真（true）则输出1；若为假（false）则输出0；例如</p>
-<p><code>bool is_empty(void) &#123;   return top == 0; &#125;</code></p>
-<p>如果top&#x3D;&#x3D;0为真返回1；为假返回0；（&#x3D;&#x3D;为判等运算符）</p>
-<h3 id="伪随机数生成函数srand和rand"><a href="#伪随机数生成函数srand和rand" class="headerlink" title="伪随机数生成函数srand和rand"></a>伪随机数生成函数srand和rand</h3><p>计算机并不能真正产生随机数，他只能根据<strong>种子</strong>的值通过一系列复杂运算给出一个貌似随机的数，种子就是最开始生成伪随机数的自变量，对于同一个函数，输入种子相同时，返回值也相同；</p>
-<p>我们希望产生随机数，就要使每次的种子值不同，因此可以选择时间作为种子</p>
-
+          <hr>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/03/31/C/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -623,7 +273,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-03-31 20:30:13 / Modified: 20:59:16" itemprop="dateCreated datePublished" datetime="2023-03-31T20:30:13+08:00">2023-03-31</time>
+              <time title="Created: 2023-03-31 20:30:13 / Modified: 21:47:03" itemprop="dateCreated datePublished" datetime="2023-03-31T20:30:13+08:00">2023-03-31</time>
             </span>
 
           
@@ -637,72 +287,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h2><ul>
-<li>private声明的类只能在本类中调用；</li>
-<li>不写权限修饰符，本包中其他类可以调用；</li>
-<li>protected声明的类，不同包下的子类可以调用；</li>
-<li>public声明的类不同包的无关子类可以调用；</li>
-</ul>
-<p>​	子类重写父类的方法，重写的方法权限不能低于父类方法。</p>
-<h2 id="静态变量static"><a href="#静态变量static" class="headerlink" title="静态变量static"></a>静态变量static</h2><ul>
-<li>被static修饰的成员变量叫做静态变量，它被该类中所有对象共享，对所有对象，它都是同一个值。相当于指针指到了同一块区域。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> package1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String teacher;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">student</span><span class="params">(String name,<span class="type">int</span> age)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name=name;</span><br><span class="line">        <span class="built_in">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTeacher</span><span class="params">(String teacher)</span></span><br><span class="line">    &#123;</span><br><span class="line">        student.teacher=teacher;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;, &quot;</span>+age+<span class="string">&quot;, &quot;</span>+teacher);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>将<code>teacher</code>声明为static变量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> package1.student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">student_test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    student s1=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Tom&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s1.setTeacher(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    s1.show(); </span><br><span class="line"></span><br><span class="line">    student s2=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Wang&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s2.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*输出结果</span></span><br><span class="line"><span class="comment">Tom, 10, Mike</span></span><br><span class="line"><span class="comment">Wang, 10, Mike</span></span><br></pre></td></tr></table></figure>
-
-<p>只在s1中对teacher赋值，下面的s2同样有teacher这个变量。一个方法一旦被声明为static，它就可以直接由类名访问。例如<code>setTeacher</code>方法用static修饰：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void setTeacher(String teacher)</span><br><span class="line">&#123;</span><br><span class="line">    student.teacher=teacher;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>直接调用<code>student.setTeacher</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> package1.student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">student_test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    student.setTeacher(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    student s1=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Tom&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s1.show(); </span><br><span class="line"></span><br><span class="line">    student s2=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Wang&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s2.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*输出结果</span></span><br><span class="line"><span class="comment">Tom, 10, Mike</span></span><br><span class="line"><span class="comment">Wang, 10, Mike</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>​	Java不支持多继承，一个类只能继承一个直接父类。Java所有的类都直接或间接继承Object类。</p>
-<h2 id="重写和重载"><a href="#重写和重载" class="headerlink" title="重写和重载"></a>重写和重载</h2><p>​	重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回类型和形参都不能改变。也就是仅改变了方法内容。重写方法的访问权限不能比父类中被重写的方法的访问权限更低。</p>
-<p>​	重载是在一个类里定义多个类名相同功能不同的方法，为了区分它们，必须让形参不同。访问权限，返回类型随意。</p>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>​	接口是类的蓝图，包括static的属性和abstract的方法。接口是实现抽象类的机制。常用于多继承，部分子类共有的父类的方法可以声明为一个接口，接口中定义了这种方法的规范。Java编译器会在接口方法前面自动加public abstract修饰，属性前面加public static final方法。</p>
-<p>​	实现接口的类中的方法，修饰符为public，因为接口的方法为public修饰，实例化的方法权限不低于public，所以为public修饰。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">printable</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">hello</span> <span class="keyword">implements</span> <span class="title class_">printable</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	接口可以继承，格式为<code>interface 接口名 extends 接口名1，接口名2...&#123; &#125;</code></p>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
-<li>抽象类是含有未实现方法的类</li>
-<li>抽象类不能实例化。因为未实现方法无法调用</li>
-<li>抽象类中不一定有抽象方法，有抽象方法的类一定是抽象类</li>
-<li>可以有构造方法</li>
-<li>抽象类的子类要么重写抽象类中的所有抽象方法，要么是抽象类</li>
-</ul>
-<h2 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h2><p>​	stream流用于处理数据，</p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>​	有两种方式创造新的线程，声明为Thread的子类或声明一个实现Runnable接口的类。</p>
-<p>线程的生命周期有5个状态：</p>
-<ul>
-<li><p>新建状态:</p>
-<p>使用 <strong>new</strong> 关键字和 <strong>Thread</strong> 类或其子类建立一个线程对象后，该线程对象就处于新建状态。它保持这个状态直到程序 <strong>start()</strong> 这个线程。</p>
-</li>
-<li><p>就绪状态:</p>
-<p>当线程对象调用了**start()**方法之后，该线程就进入就绪状态。就绪状态的线程处于就绪队列中，要等待JVM里线程调度器的调度。</p>
-</li>
-<li><p>运行状态:</p>
-<p>如果就绪状态的线程获取 CPU 资源，就可以执行 **run()**，此时线程便处于运行状态。处于运行状态的线程最为复杂，它可以变为阻塞状态、就绪状态和死亡状态。</p>
-</li>
-<li><p>阻塞状态:</p>
-<p>如果一个线程执行了sleep（睡眠）、suspend（挂起）等方法，失去所占用资源之后，该线程就从运行状态进入阻塞状态。在睡眠时间已到或获得设备资源后可以重新进入就绪状态。可以分为三种：</p>
-<ul>
-<li>等待阻塞：运行状态中的线程执行 wait() 方法，使线程进入到等待阻塞状态。</li>
-<li>同步阻塞：线程在获取 synchronized 同步锁失败(因为同步锁被其他线程占用)。</li>
-<li>其他阻塞：通过调用线程的 sleep() 或 join() 发出了 I&#x2F;O 请求时，线程就会进入到阻塞状态。当sleep() 状态超时，join() 等待线程终止或超时，或者 I&#x2F;O 处理完毕，线程重新转入就绪状态。</li>
-</ul>
-</li>
-<li><p>死亡状态:</p>
-<p>一个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。</p>
-<img src="/2023/03/31/Java/image/image1.png" align="middle" width="60%">
-
-<h3 id="线程的优先级"><a href="#线程的优先级" class="headerlink" title="线程的优先级"></a>线程的优先级</h3><p>​	每一个 Java 线程都有一个优先级，这样有助于操作系统确定线程的调度顺序。Java 线程的优先级是一个整数，其取值范围是1-10.</p>
-<p>具有较高优先级的线程对程序更重要，并且应该在低优先级的线程之前分配处理器资源。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RunnableDemo</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;<span class="comment">//Runnable里定义了Thread类，class RunnableDemo extends Thread</span></span><br><span class="line">    <span class="keyword">private</span> Thread t;<span class="comment">//t属于线程类</span></span><br><span class="line">    <span class="keyword">private</span> String threadName;</span><br><span class="line">    </span><br><span class="line">    RunnableDemo( String name) &#123;</span><br><span class="line">       threadName = name;</span><br><span class="line">       System.out.println(<span class="string">&quot;Creating &quot;</span> +  threadName );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;Running &quot;</span> +  threadName );</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">4</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">             System.out.println(<span class="string">&quot;Thread: &quot;</span> + threadName + <span class="string">&quot;, &quot;</span> + i);</span><br><span class="line">             <span class="comment">// 让线程睡眠一会</span></span><br><span class="line">             Thread.sleep(<span class="number">50</span>);</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;<span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          System.out.println(<span class="string">&quot;Thread &quot;</span> +  threadName + <span class="string">&quot; interrupted.&quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">&quot;Thread &quot;</span> +  threadName + <span class="string">&quot; exiting.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span> <span class="params">()</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;Starting &quot;</span> +  threadName );</span><br><span class="line">       <span class="keyword">if</span> (t == <span class="literal">null</span>) &#123;</span><br><span class="line">          t = <span class="keyword">new</span> <span class="title class_">Thread</span> (<span class="built_in">this</span>, threadName);</span><br><span class="line">          t.start ();<span class="comment">//开启一个线程</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestThread</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">       <span class="type">RunnableDemo</span> <span class="variable">R1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RunnableDemo</span>( <span class="string">&quot;Thread-1&quot;</span>);</span><br><span class="line">       R1.start();</span><br><span class="line">       </span><br><span class="line">       <span class="type">RunnableDemo</span> <span class="variable">R2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RunnableDemo</span>( <span class="string">&quot;Thread-2&quot;</span>);</span><br><span class="line">       R2.start();</span><br><span class="line">    &#125;   </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+          <hr>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/03/31/Java/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
