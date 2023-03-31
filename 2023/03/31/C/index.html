@@ -20,30 +20,34 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Ken&#39;s Home">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ken&#39;s Home">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="运算符自增i++与++i的区别在于：i++是i的值在引用后自增，++i是i的值在引用前自增； int j,i&#x3D;1; i++;\\本条语句结束后，i&#x3D;2 		++j；\\本条语句执行前，j&#x3D;2 printf(&quot;%d\t%d&quot;,i++,++j);\\本条语句执行前，j&#x3D;3；本条语句结束后，i&#x3D;3；因此结果为2	3	printf(&quot;%d\t%d&quot;,i,j);\\结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C笔记">
+<meta property="og:url" content="http://example.com/2023/03/31/C/index.html">
 <meta property="og:site_name" content="Ken&#39;s Home">
-<meta property="og:description" content="Welcome to Ken&#39;s Home">
+<meta property="og:description" content="运算符自增i++与++i的区别在于：i++是i的值在引用后自增，++i是i的值在引用前自增； int j,i&#x3D;1; i++;\\本条语句结束后，i&#x3D;2 		++j；\\本条语句执行前，j&#x3D;2 printf(&quot;%d\t%d&quot;,i++,++j);\\本条语句执行前，j&#x3D;3；本条语句结束后，i&#x3D;3；因此结果为2	3	printf(&quot;%d\t%d&quot;,i,j);\\结">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-31T12:56:50.000Z">
+<meta property="article:modified_time" content="2023-03-31T12:58:40.164Z">
 <meta property="article:author" content="Ken">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="语言">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/03/31/C/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Ken's Home</title>
+  <title>C笔记 | Ken's Home</title>
   
 
 
@@ -176,9 +180,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -194,10 +199,9 @@
       <meta itemprop="name" content="Ken's Home">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/31/C/" class="post-title-link" itemprop="url">C笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          C笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -221,7 +225,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h2><p>i++与++i的区别在于：i++是i的值在引用后自增，++i是i的值在引用前自增；</p>
+        <h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h2><p>i++与++i的区别在于：i++是i的值在引用后自增，++i是i的值在引用前自增；</p>
 <p><code>int j,i=1; i++;\\本条语句结束后，i=2</code></p>
 <p><code>		++j；\\本条语句执行前，j=2</code></p>
 <p><code>printf(&quot;%d\t%d&quot;,i++,++j);\\本条语句执行前，j=3；本条语句结束后，i=3；因此结果为2	3</code>	<br><code>printf(&quot;%d\t%d&quot;,i,j);\\结果为3	3</code></p>
@@ -580,144 +584,34 @@
 <h3 id="伪随机数生成函数srand和rand"><a href="#伪随机数生成函数srand和rand" class="headerlink" title="伪随机数生成函数srand和rand"></a>伪随机数生成函数srand和rand</h3><p>计算机并不能真正产生随机数，他只能根据<strong>种子</strong>的值通过一系列复杂运算给出一个貌似随机的数，种子就是最开始生成伪随机数的自变量，对于同一个函数，输入种子相同时，返回值也相同；</p>
 <p>我们希望产生随机数，就要使每次的种子值不同，因此可以选择时间作为种子</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C</a>
+              <a href="/tags/%E8%AF%AD%E8%A8%80/" rel="tag"># 语言</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/31/Java/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Ken">
-      <meta itemprop="description" content="Welcome to Ken's Home">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ken's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/31/Java/" class="post-title-link" itemprop="url">Java笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-03-31 20:30:13 / Modified: 20:59:16" itemprop="dateCreated datePublished" datetime="2023-03-31T20:30:13+08:00">2023-03-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h2><ul>
-<li>private声明的类只能在本类中调用；</li>
-<li>不写权限修饰符，本包中其他类可以调用；</li>
-<li>protected声明的类，不同包下的子类可以调用；</li>
-<li>public声明的类不同包的无关子类可以调用；</li>
-</ul>
-<p>​	子类重写父类的方法，重写的方法权限不能低于父类方法。</p>
-<h2 id="静态变量static"><a href="#静态变量static" class="headerlink" title="静态变量static"></a>静态变量static</h2><ul>
-<li>被static修饰的成员变量叫做静态变量，它被该类中所有对象共享，对所有对象，它都是同一个值。相当于指针指到了同一块区域。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> package1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String teacher;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">student</span><span class="params">(String name,<span class="type">int</span> age)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name=name;</span><br><span class="line">        <span class="built_in">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTeacher</span><span class="params">(String teacher)</span></span><br><span class="line">    &#123;</span><br><span class="line">        student.teacher=teacher;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;, &quot;</span>+age+<span class="string">&quot;, &quot;</span>+teacher);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>将<code>teacher</code>声明为static变量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> package1.student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">student_test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    student s1=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Tom&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s1.setTeacher(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    s1.show(); </span><br><span class="line"></span><br><span class="line">    student s2=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Wang&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s2.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*输出结果</span></span><br><span class="line"><span class="comment">Tom, 10, Mike</span></span><br><span class="line"><span class="comment">Wang, 10, Mike</span></span><br></pre></td></tr></table></figure>
-
-<p>只在s1中对teacher赋值，下面的s2同样有teacher这个变量。一个方法一旦被声明为static，它就可以直接由类名访问。例如<code>setTeacher</code>方法用static修饰：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void setTeacher(String teacher)</span><br><span class="line">&#123;</span><br><span class="line">    student.teacher=teacher;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>直接调用<code>student.setTeacher</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> package1.student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">student_test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    student.setTeacher(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    student s1=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Tom&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s1.show(); </span><br><span class="line"></span><br><span class="line">    student s2=<span class="keyword">new</span> <span class="title class_">student</span>(<span class="string">&quot;Wang&quot;</span>, <span class="number">10</span>);</span><br><span class="line">    s2.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*输出结果</span></span><br><span class="line"><span class="comment">Tom, 10, Mike</span></span><br><span class="line"><span class="comment">Wang, 10, Mike</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>​	Java不支持多继承，一个类只能继承一个直接父类。Java所有的类都直接或间接继承Object类。</p>
-<h2 id="重写和重载"><a href="#重写和重载" class="headerlink" title="重写和重载"></a>重写和重载</h2><p>​	重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回类型和形参都不能改变。也就是仅改变了方法内容。重写方法的访问权限不能比父类中被重写的方法的访问权限更低。</p>
-<p>​	重载是在一个类里定义多个类名相同功能不同的方法，为了区分它们，必须让形参不同。访问权限，返回类型随意。</p>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>​	接口是类的蓝图，包括static的属性和abstract的方法。接口是实现抽象类的机制。常用于多继承，部分子类共有的父类的方法可以声明为一个接口，接口中定义了这种方法的规范。Java编译器会在接口方法前面自动加public abstract修饰，属性前面加public static final方法。</p>
-<p>​	实现接口的类中的方法，修饰符为public，因为接口的方法为public修饰，实例化的方法权限不低于public，所以为public修饰。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">printable</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">hello</span> <span class="keyword">implements</span> <span class="title class_">printable</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	接口可以继承，格式为<code>interface 接口名 extends 接口名1，接口名2...&#123; &#125;</code></p>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
-<li>抽象类是含有未实现方法的类</li>
-<li>抽象类不能实例化。因为未实现方法无法调用</li>
-<li>抽象类中不一定有抽象方法，有抽象方法的类一定是抽象类</li>
-<li>可以有构造方法</li>
-<li>抽象类的子类要么重写抽象类中的所有抽象方法，要么是抽象类</li>
-</ul>
-<h2 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h2><p>​	stream流用于处理数据，</p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>​	有两种方式创造新的线程，声明为Thread的子类或声明一个实现Runnable接口的类。</p>
-<p>线程的生命周期有5个状态：</p>
-<ul>
-<li><p>新建状态:</p>
-<p>使用 <strong>new</strong> 关键字和 <strong>Thread</strong> 类或其子类建立一个线程对象后，该线程对象就处于新建状态。它保持这个状态直到程序 <strong>start()</strong> 这个线程。</p>
-</li>
-<li><p>就绪状态:</p>
-<p>当线程对象调用了**start()**方法之后，该线程就进入就绪状态。就绪状态的线程处于就绪队列中，要等待JVM里线程调度器的调度。</p>
-</li>
-<li><p>运行状态:</p>
-<p>如果就绪状态的线程获取 CPU 资源，就可以执行 **run()**，此时线程便处于运行状态。处于运行状态的线程最为复杂，它可以变为阻塞状态、就绪状态和死亡状态。</p>
-</li>
-<li><p>阻塞状态:</p>
-<p>如果一个线程执行了sleep（睡眠）、suspend（挂起）等方法，失去所占用资源之后，该线程就从运行状态进入阻塞状态。在睡眠时间已到或获得设备资源后可以重新进入就绪状态。可以分为三种：</p>
-<ul>
-<li>等待阻塞：运行状态中的线程执行 wait() 方法，使线程进入到等待阻塞状态。</li>
-<li>同步阻塞：线程在获取 synchronized 同步锁失败(因为同步锁被其他线程占用)。</li>
-<li>其他阻塞：通过调用线程的 sleep() 或 join() 发出了 I&#x2F;O 请求时，线程就会进入到阻塞状态。当sleep() 状态超时，join() 等待线程终止或超时，或者 I&#x2F;O 处理完毕，线程重新转入就绪状态。</li>
-</ul>
-</li>
-<li><p>死亡状态:</p>
-<p>一个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。</p>
-<img src="/2023/03/31/Java/image/image1.png" align="middle" width="60%">
-
-<h3 id="线程的优先级"><a href="#线程的优先级" class="headerlink" title="线程的优先级"></a>线程的优先级</h3><p>​	每一个 Java 线程都有一个优先级，这样有助于操作系统确定线程的调度顺序。Java 线程的优先级是一个整数，其取值范围是1-10.</p>
-<p>具有较高优先级的线程对程序更重要，并且应该在低优先级的线程之前分配处理器资源。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RunnableDemo</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;<span class="comment">//Runnable里定义了Thread类，class RunnableDemo extends Thread</span></span><br><span class="line">    <span class="keyword">private</span> Thread t;<span class="comment">//t属于线程类</span></span><br><span class="line">    <span class="keyword">private</span> String threadName;</span><br><span class="line">    </span><br><span class="line">    RunnableDemo( String name) &#123;</span><br><span class="line">       threadName = name;</span><br><span class="line">       System.out.println(<span class="string">&quot;Creating &quot;</span> +  threadName );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;Running &quot;</span> +  threadName );</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">4</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">             System.out.println(<span class="string">&quot;Thread: &quot;</span> + threadName + <span class="string">&quot;, &quot;</span> + i);</span><br><span class="line">             <span class="comment">// 让线程睡眠一会</span></span><br><span class="line">             Thread.sleep(<span class="number">50</span>);</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;<span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          System.out.println(<span class="string">&quot;Thread &quot;</span> +  threadName + <span class="string">&quot; interrupted.&quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">&quot;Thread &quot;</span> +  threadName + <span class="string">&quot; exiting.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span> <span class="params">()</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;Starting &quot;</span> +  threadName );</span><br><span class="line">       <span class="keyword">if</span> (t == <span class="literal">null</span>) &#123;</span><br><span class="line">          t = <span class="keyword">new</span> <span class="title class_">Thread</span> (<span class="built_in">this</span>, threadName);</span><br><span class="line">          t.start ();<span class="comment">//开启一个线程</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestThread</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">       <span class="type">RunnableDemo</span> <span class="variable">R1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RunnableDemo</span>( <span class="string">&quot;Thread-1&quot;</span>);</span><br><span class="line">       R1.start();</span><br><span class="line">       </span><br><span class="line">       <span class="type">RunnableDemo</span> <span class="variable">R2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RunnableDemo</span>( <span class="string">&quot;Thread-2&quot;</span>);</span><br><span class="line">       R2.start();</span><br><span class="line">    &#125;   </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/31/Java/" rel="prev" title="Java笔记">
+      <i class="fa fa-chevron-left"></i> Java笔记
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -770,6 +664,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%A2%9E"><span class="nav-number">1.1.</span> <span class="nav-text">自增</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#continue%E8%AF%AD%E5%8F%A5%E4%B8%8Ebreak%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.1.</span> <span class="nav-text">continue语句与break语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#goto%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.2.</span> <span class="nav-text">goto语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">变量与类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.2.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E%E4%B8%8E%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97"><span class="nav-number">4.3.</span> <span class="nav-text">转换说明与转义序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typedef%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="nav-number">4.4.</span> <span class="nav-text">typedef类型声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B"><span class="nav-number">4.5.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C"><span class="nav-number">4.6.</span> <span class="nav-text">字符操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getchar%E5%87%BD%E6%95%B0%EF%BC%88%E8%AF%BB%E5%8F%96%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6%EF%BC%89"><span class="nav-number">4.7.</span> <span class="nav-text">getchar函数（读取单个字符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.8.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E6%8C%87%E9%92%88"><span class="nav-number">4.8.1.</span> <span class="nav-text">字符数组与字符指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-string-h-gt-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">4.8.2.</span> <span class="nav-text">&lt;string.h&gt;头文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#strcpy%E5%87%BD%E6%95%B0%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%8D%E5%88%B6%EF%BC%89"><span class="nav-number">4.8.2.1.</span> <span class="nav-text">strcpy函数（字符串复制）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strlen%E5%87%BD%E6%95%B0%EF%BC%88%E6%B1%82%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%EF%BC%89"><span class="nav-number">4.8.2.2.</span> <span class="nav-text">strlen函数（求字符串长度）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strcat%E5%87%BD%E6%95%B0%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5%EF%BC%89"><span class="nav-number">4.8.2.3.</span> <span class="nav-text">strcat函数（字符串拼接）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strcmp%E5%87%BD%E6%95%B0%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%EF%BC%89"><span class="nav-number">4.8.2.4.</span> <span class="nav-text">strcmp函数（字符串比较）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enum%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.9.</span> <span class="nav-text">enum枚举类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">5.1.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E5%8F%82%E6%95%B0"><span class="nav-number">5.1.1.</span> <span class="nav-text">形式参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%8F%82%E6%95%B0"><span class="nav-number">5.1.2.</span> <span class="nav-text">实际参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%9E%8B%E5%AE%9E%E9%99%85%E5%8F%82%E6%95%B0"><span class="nav-number">5.1.2.1.</span> <span class="nav-text">数组型实际参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.2.</span> <span class="nav-text">一般格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.3.</span> <span class="nav-text">return语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">6.1.</span> <span class="nav-text">局部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%9C%9F"><span class="nav-number">6.1.0.1.</span> <span class="nav-text">存储期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">6.1.0.2.</span> <span class="nav-text">外部变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">6.1.0.3.</span> <span class="nav-text">栈</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAC%E7%A8%8B%E5%BA%8F"><span class="nav-number">6.2.</span> <span class="nav-text">构建C程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E9%92%88"><span class="nav-number">7.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="nav-number">7.1.</span> <span class="nav-text">内存地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="nav-number">7.2.</span> <span class="nav-text">指针变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="nav-number">7.2.1.</span> <span class="nav-text">声明指针变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%9D%80%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">7.2.2.</span> <span class="nav-text">取址运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">7.2.3.</span> <span class="nav-text">寻址运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E8%B5%8B%E5%80%BC"><span class="nav-number">7.2.4.</span> <span class="nav-text">指针赋值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84"><span class="nav-number">7.3.</span> <span class="nav-text">指针与数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84"><span class="nav-number">7.3.1.</span> <span class="nav-text">指针数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88"><span class="nav-number">7.3.2.</span> <span class="nav-text">数组指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">7.3.3.</span> <span class="nav-text">指针与二维数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88"><span class="nav-number">7.4.</span> <span class="nav-text">空指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">7.5.</span> <span class="nav-text">动态内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc%E5%87%BD%E6%95%B0"><span class="nav-number">7.5.1.</span> <span class="nav-text">malloc函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="nav-number">7.5.2.</span> <span class="nav-text">释放内存空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="nav-number">7.5.3.</span> <span class="nav-text">内存泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calloc%E5%87%BD%E6%95%B0"><span class="nav-number">7.5.4.</span> <span class="nav-text">calloc函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">8.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F"><span class="nav-number">8.1.</span> <span class="nav-text">结构体变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%91%98%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="nav-number">8.2.</span> <span class="nav-text">成员的获取和赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="nav-number">8.3.</span> <span class="nav-text">结构体嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E6%95%B0%E7%BB%84"><span class="nav-number">8.4.</span> <span class="nav-text">结构数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">9.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">9.1.</span> <span class="nav-text">链表与数组的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="nav-number">9.2.</span> <span class="nav-text">链表的建立</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E7%BB%93%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="nav-number">9.2.1.</span> <span class="nav-text">声明结点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BB%93%E7%82%B9"><span class="nav-number">9.2.2.</span> <span class="nav-text">创建结点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">9.3.</span> <span class="nav-text">链表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E7%BB%93%E7%82%B9"><span class="nav-number">9.3.1.</span> <span class="nav-text">插入结点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">10.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%86%99"><span class="nav-number">10.1.</span> <span class="nav-text">读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fseek%E5%87%BD%E6%95%B0"><span class="nav-number">10.1.1.</span> <span class="nav-text">fseek函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getc%E5%87%BD%E6%95%B0"><span class="nav-number">10.1.2.</span> <span class="nav-text">getc函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">头文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-time-h-gt-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">11.1.</span> <span class="nav-text">&lt;time.h&gt;头文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-stdlib-h-gt-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">11.2.</span> <span class="nav-text">&lt;stdlib.h&gt;头文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc%E5%87%BD%E6%95%B0-1"><span class="nav-number">11.2.1.</span> <span class="nav-text">malloc函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#system%E5%87%BD%E6%95%B0"><span class="nav-number">11.2.2.</span> <span class="nav-text">system函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-windows-h-gt-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">11.3.</span> <span class="nav-text">&lt;windows.h&gt;头文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E7%BB%93%E6%9E%84"><span class="nav-number">11.3.1.</span> <span class="nav-text">坐标结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep%E5%87%BD%E6%95%B0"><span class="nav-number">11.3.2.</span> <span class="nav-text">sleep函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-stdbool-h-gt-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">11.4.</span> <span class="nav-text">&lt;stdbool.h&gt;头文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0srand%E5%92%8Crand"><span class="nav-number">11.4.1.</span> <span class="nav-text">伪随机数生成函数srand和rand</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
