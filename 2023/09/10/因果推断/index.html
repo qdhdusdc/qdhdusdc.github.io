@@ -1,0 +1,789 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cube32.png">
+  <link rel="icon" href="/img/cube32.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="M.Q.">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="article">
+<meta property="og:title" content="因果推断">
+<meta property="og:url" content="https://qdhdusdc.github.io/2023/09/10/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/index.html">
+<meta property="og:site_name" content="UTOPIA">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://qdhdusdc.github.io/2023/09/10/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/%E6%8D%95%E8%8E%B7.png">
+<meta property="article:published_time" content="2023-09-10T11:42:35.000Z">
+<meta property="article:modified_time" content="2023-09-10T12:00:17.807Z">
+<meta property="article:author" content="M.Q.">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Casual Inference">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://qdhdusdc.github.io/2023/09/10/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/%E6%8D%95%E8%8E%B7.png">
+  
+  
+  
+  <title>因果推断 - UTOPIA</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"qdhdusdc.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/0.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"AgcF1mQgwJbHELHjHp7JRJcB-gzGzoHsz","app_key":"0fENfeqhc4WLt6AcCXBkTH91","server_url":"https://agcf1mqg.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Home</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="因果推断"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-10 19:42" pubdate>
+          September 10, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          Read <span id="leancloud-page-views"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">因果推断</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <hr>
+<span id="more"></span>
+<h1 id="基本公式">基本公式</h1>
+<p>用大写字母表示随机变量，小写字母代表随机变量的取值，公式中出现的<span class="math inline">\(P(X)\)</span>表示对<span class="math inline">\(X\)</span>的所有取值均成立，<span class="math inline">\(P(X=x)或\)</span><span class="math inline">\(P(x)\)</span>表示<span class="math inline">\(X=x\)</span>的概率。</p>
+<h2 id="条件独立">条件独立</h2>
+<p>在随机变量<span class="math inline">\(C\)</span>的取值确定的情况下<span class="math inline">\((C=k)\)</span>，随机变量<span class="math inline">\(A\)</span>与<span class="math inline">\(B\)</span>独立，则<span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>关于<span class="math inline">\(C=k\)</span>条件独立，即：</p>
+<p><span class="math inline">\(A\perp B|C=k\iff
+P(A|C=k)P(B|C=k)=P(AB|C=k)\)</span></p>
+<p>若对任意<span class="math inline">\(C\)</span>的取值均有上述关系，则<span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>关于<span class="math inline">\(C\)</span>条件独立，记为<span class="math inline">\(A\perp B|C\)</span></p>
+<p><span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>关于<span class="math inline">\(C\)</span>条件独立与<span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>独立既不充分也不必要，比如设<span class="math inline">\(A\)</span>：第一次扔硬币正面朝上，<span class="math inline">\(B\)</span>：第二次扔硬币正面朝上，<span class="math inline">\(C\)</span>：两次均正面朝上。此时<span class="math inline">\(A\)</span>与<span class="math inline">\(B\)</span>独立，但是<span class="math inline">\(P(A|C=1)=P(B|C=1)=P(AB|C=1)=1\)</span>，<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>关于<span class="math inline">\(C\)</span>不独立。另一方面，设<span class="math inline">\(A=B=C\)</span>，此时有<span class="math inline">\(P(A|C)P(B|C)=P(AB|C)=1\)</span>，但<span class="math inline">\(P(A)P(B)=P(A)^2\neq P(AB)=P(A)\)</span></p>
+<h2 id="链式法则">链式法则</h2>
+<p>对于随机变量<span class="math inline">\(X_1,X_2...X_n\)</span>，当它们的取值为<span class="math inline">\(X_i=x_i\)</span>时，有 <span class="math display">\[
+P(x_1,x_2,...x_n)=P(x_1)P(x_2|x_1)...P(x_n|x_1,x_2...x_{n-1})
+\]</span> 由条件概率定义即可证</p>
+<h1 id="朴素贝叶斯">朴素贝叶斯</h1>
+<p>将分类任务看作是在给定特征的条件下目标取某个值的概率，最终要得到<span class="math inline">\(P(Y|X_1,X_2,...X_n)\)</span></p>
+<p>由条件概率关系（贝叶斯公式） <span class="math display">\[
+P(Y|X_1,X_2,...X_n)=\frac{P(X_1,X_2,...X_n|Y)P(Y)}{P(X_1,X_2,...X_n)}
+\]</span> 其中，<span class="math inline">\(P(Y)\)</span>可以由目标取某值的频率得到，在分类任务中，一般目标值的种类数远小于样本数，因此可以这么做。而<span class="math inline">\(P(X_1,X_2,...X_n|Y)\)</span>和<span class="math inline">\(P(X_1,X_2,...X_n)\)</span>就不能这样了，这时特征的组合过多，设想每个特征都是二值的，那么就有<span class="math inline">\(2^n\)</span>种组合，未必找得到符合这种组合的样本。因此，需要做亿点简化，把特征均看作独立的，并且特征关于目标也都是独立的。于是把上式简化成
+<span class="math display">\[
+P(Y|X_1,X_2,...X_n)=\frac{P(X_1|Y)P(X_2|Y)...P(X_n|Y)P(Y)}{P(X_1)P(X_2)...P(X_n)}
+\]</span> 这样<span class="math inline">\(P(X_k|Y)\)</span>，<span class="math inline">\(P(X_k)\)</span>都可以用频率得到了。</p>
+<p>毫无疑问，这种做法过于暴殄天物，数据集特征越多，特征冗余就越多，最后效果越不好。</p>
+<h1 id="贝叶斯网络">贝叶斯网络</h1>
+<p>朴素贝叶斯的做法把特征间的关系完全忽略了。贝叶斯网络则没有这么暴力，虽然还是做了一些简化。
+需要指出，贝叶斯网络本质上是描述随机变量相关性的关系图，贝叶斯网络中的箭头方向仅代表了特征的加入顺序，箭头连接的两个变量是相关的，但不一定具有因果性。</p>
+<p>贝叶斯网络的算法流程如下：</p>
+<p>输入：随机变量<span class="math inline">\(V_1,V_2...V_n\)</span>
+输出：描述随机变量相关性的有向无环图DAG</p>
+<ol type="1">
+<li><p>for <span class="math inline">\(i\)</span> in <span class="math inline">\(1,2...n\)</span> do</p></li>
+<li><p>Add <span class="math inline">\(V_i\)</span> into the graph, if
+<span class="math inline">\(V_i\)</span> has correlation with any other
+nodes(which have a smaller order than <span class="math inline">\(V_i\)</span>) in the graph, add a directed edge
+between these two nodes with <span class="math inline">\(V_i\)</span> as
+the end point. For example, if <span class="math inline">\(V_k(k&lt;i)\)</span> has a correlation with <span class="math inline">\(V_i\)</span>, then add a directed edge from <span class="math inline">\(V_k\)</span> to <span class="math inline">\(V_i\)</span></p></li>
+<li><p>endfor</p></li>
+<li><p>Compute the probability table for every point.</p></li>
+</ol>
+<h2 id="条件独立假设">条件独立假设</h2>
+<p>可以看到，在贝叶斯网络中的相关性是手动添加的，手动的好处是让网络结构更简单。用启发式算法暴力寻优也可以得到一个贝叶斯网络，能这样做的原因是在贝叶斯网络中只考虑变量之间的相关性，而相关性可以直接由频率给出。例如下图：</p>
+<p><img src="捕获.png" srcset="/img/0.gif" lazyload>{:width="300px" height="200px"}</p>
+<p>左右两图描述了同一件事，即最右边的概率表。最右边的概率表直接从数据集中得出。这两个结构孰是孰非，站在上帝视角来看是左边描述了正确的因果关系。然而，我们实际上从数据集中只得能得到概率表，也就只能判断出下雨和交通堵塞存在相关性。如何得到因果性会在下文讨论，在此先弄明白另一个问题。考虑一个<span class="math inline">\(n\)</span>个变量组成的贝叶斯网络，若要计算<span class="math inline">\(P(V_k=v_k)\)</span>，则由链式法则计算： <span class="math display">\[
+P(v_k)=\prod _{i=1}^{n}P(v|)
+\]</span></p>
+<p>有向图中的节点代表随机变量，有向边代表变量之间的因果关系。</p>
+<p>d分离关系用于判断两个变量之间是否在给定其他变量情况下相互独立。</p>
+<p>命题1：稀疏d</p>
+<p>假设变量服从</p>
+<p>Blocking stands for</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ML/" class="category-chain-item">ML</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/ML/Casual-Inference/" class="category-chain-item">Casual Inference</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Machine-Learning/">#Machine Learning</a>
+      
+        <a href="/tags/Casual-Inference/">#Casual Inference</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/08/MIMIC-IV-Script/" title="MIMIC IV查询程序">
+                        <span class="hidden-mobile">MIMIC IV查询程序</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"AgcF1mQgwJbHELHjHp7JRJcB-gzGzoHsz","appKey":"0fENfeqhc4WLt6AcCXBkTH91","path":"window.location.pathname","placeholder":"Submit a comment here","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://agcf1mqg.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        Views: 
+        <span id="leancloud-site-pv"></span>
+        
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        Visitors: 
+        <span id="leancloud-site-uv"></span>
+        
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
